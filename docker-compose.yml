@@ -1,0 +1,13 @@
+services:
+  devgame:
+    container_name: DevGame
+    build:
+      context: ./DevGame/backend
+    ports:
+      - 8080:8080 
+    networks:
+      - devgame_network
+
+networks:
+  devgame_network:
+    name: devgame_network
