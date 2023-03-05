@@ -257,3 +257,4 @@ poetry.toml
 # ruff
 .ruff_cache/
 .gitignore
+DevGame/.env
