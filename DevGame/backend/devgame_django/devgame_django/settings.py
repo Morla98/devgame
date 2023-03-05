@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'devgame_django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', 'devgame-db'),
-        'USER': os.environ.get('MYSQL_USER', 'devgame-user'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'password'),
-        'HOST': os.environ.get('MYSQL_DATABASE_HOST', 'devgame_db'),
-        'PORT': os.environ.get('MYSQL_DATABASE_PORT', 3306),
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQL_USER'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
+        'HOST': os.environ.get('MYSQL_DATABASE_HOST'),
+        'PORT': os.environ.get('MYSQL_DATABASE_PORT'),
     }
 }
 
