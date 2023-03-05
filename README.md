@@ -50,6 +50,20 @@ Exit the Matrix
 ```sh
 shutdown --force
 ```
+Docker
+```sh
+# Start the Containers
+docker compose up
+# Delete the Containers + Images
+docker compose down --rmi all
+```
 
+## Troubleshooting
+### Frontend
 
+### Backend
+### Database
+#### **[ERROR] Another process with pid XX is using unix socket file**
+Happens whenever you build the devgame_my-db Volume for the first time.<br>
+[Use:](https://stackoverflow.com/questions/36103721/docker-db-container-running-another-process-with-pid-id-is-using-unix-socket) ```sudo rm /var/lib/docker/volumes/devgame_my-db/_data/mysql.sock.lock``` 
 
