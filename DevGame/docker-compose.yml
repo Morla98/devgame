@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  devgame_db:
+    container_name: DevGame_Database
+    build:
+      context: .
+      dockerfile: ./mysql/Dockerfile
+    restart: unless-stopped
+    env_file: .env 
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - my-db:/var/lib/mysql
+
+  devgame_frontend:
+    container_name: devgame_frontend
+    build:
+      context: ./frontend
+    # restart: always
+    ports:
+      - 8080:8080
+
+  devgame_backend:
+    container_name: DevGame_backend
+    build:
+      context: ./backend
+    env_file: .env
+    restart: always
+    volumes: 
+      - ./backend/devgame_django:/devgame_django
+    depends_on:
+      - devgame_db
+    working_dir: "/devgame_django"
+    expose:
+      - 8081
+    ports:
+      - 8081:8081
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8081"]
+
+volumes:
+  my-db:

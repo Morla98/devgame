@@ -14,6 +14,37 @@ A system is to be designed and implemented in which data on activities from vari
 * Git
 * Statistic Analysing Software (TODO: FIND USAGE & FIND SOFTWARE)
 
+
+## Database Schematic
+#### Collectoren
+- id
+- name 
+- status 
+- UserID
+- AchievementID
+
+#### User
+- id
+- first_name
+- last_name
+- email
+- Department
+
+#### Achievement
+- id
+- CollectorID
+- name
+- description
+- level
+- max_score
+
+#### User_Achievement
+- id
+- AchievmentID
+- UserID
+- score
+- current_level
+	
 ## Useful Commands
 Exit the Matrix
 ```sh
