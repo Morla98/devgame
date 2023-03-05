@@ -129,6 +129,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+.env
 .venv
 env/
 venv/
@@ -255,3 +256,4 @@ poetry.toml
 
 # ruff
 .ruff_cache/
+.gitignore
