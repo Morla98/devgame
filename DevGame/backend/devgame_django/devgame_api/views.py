@@ -1,6 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from rest_framework import generics
+from .serializers import CollectorSerializer
+from .models import Collector
 
-def main(request):
-    return HttpResponse('API')
+# Create your views here.
+# class CollectorView(generics.ListAPIView):
+class CollectorView(generics.ListCreateAPIView):
+    queryset = Collector.objects.all()
+    serializer_class = CollectorSerializer

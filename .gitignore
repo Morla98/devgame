@@ -258,3 +258,4 @@ poetry.toml
 .ruff_cache/
 .gitignore
 DevGame/.env
+DevGame/backend/devgame_django/devgame_api/migrations/0001_initial.py

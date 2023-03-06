@@ -19,9 +19,7 @@ A system is to be designed and implemented in which data on activities from vari
 #### Collectoren
 - id
 - name 
-- status 
-- UserID
-- AchievementID
+- status
 
 #### User
 - id
@@ -35,7 +33,7 @@ A system is to be designed and implemented in which data on activities from vari
 - CollectorID
 - name
 - description
-- level
+- max_level
 - max_score
 
 #### User_Achievement
