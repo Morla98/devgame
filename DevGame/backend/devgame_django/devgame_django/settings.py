@@ -43,7 +43,9 @@ INSTALLED_APPS = [
 
     'rest_framework',
     
-    'devgame_overview',
+    'devgame_overview.apps.DevgameOverviewConfig',
+    'devgame_api.apps.DevgameApiConfig',
+
 ]
 
 MIDDLEWARE = [

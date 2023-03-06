@@ -1,8 +1,6 @@
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from django.shortcuts import render
+from django.http import HttpResponse
+# Create your views here.
 
-@api_view(['GET'])
-def getData(request):
-    person = {'name': 'Dennis', 'age':21}
-    return Response(person)
-
+def main(request):
+    return HttpResponse('API')
