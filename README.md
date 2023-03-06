@@ -54,8 +54,15 @@ Docker
 ```sh
 # Start the Containers
 docker compose up
+
 # Delete the Containers + Images
 docker compose down --rmi all
+
+# List all running Containers
+docker ps
+
+# Execute Command inside running Container / go inside
+docker exec -it CONTAINERID /bin/bash
 ```
 
 ## Troubleshooting
