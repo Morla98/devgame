@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from .views import CollectorView
 
 urlpatterns = [
-    path('data', views.getData),
+    path('', CollectorView.as_view())
 ]

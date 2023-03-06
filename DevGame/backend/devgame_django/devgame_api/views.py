@@ -1,8 +1,10 @@
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from django.shortcuts import render
+from rest_framework import generics
+from .serializers import CollectorSerializer
+from .models import Collector
 
-@api_view(['GET'])
-def getData(request):
-    person = {'name': 'Dennis', 'age':23}
-    return Response(person)
-
+# Create your views here.
+# class CollectorView(generics.ListAPIView):
+class CollectorView(generics.ListCreateAPIView):
+    queryset = Collector.objects.all()
+    serializer_class = CollectorSerializer
