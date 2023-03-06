@@ -5,10 +5,10 @@ services:
     build:
       context: .
       dockerfile: ./mysql/Dockerfile
-    restart: unless-stopped
+    restart: always
     env_file: .env 
     ports:
-      - 3306:3306
+      - 127.0.0.1:3306:3306 # only bind port locally for now
     expose:
       - 3306
     volumes:
@@ -20,7 +20,7 @@ services:
       context: ./frontend
     # restart: always
     ports:
-      - 8080:8080
+      - 127.0.0.1:8080:8080 # only bind port locally for now
 
   devgame_backend:
     container_name: DevGame_backend
@@ -36,7 +36,11 @@ services:
     expose:
       - 8081
     ports:
-      - 8081:8081
+      - 127.0.0.1:8081:8081 # only bind port locally for now
+
+    # command: ["python", "manage.py", "makemigrations"] 
+    # command: ["python", "manage.py", "migrate"]
+    
     command: ["python", "manage.py", "runserver", "0.0.0.0:8081"]
 
 volumes:
