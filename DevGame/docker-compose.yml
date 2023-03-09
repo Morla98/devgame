@@ -14,16 +14,8 @@ services:
     volumes:
       - my-db:/var/lib/mysql
 
-  devgame_frontend:
-    container_name: devgame_frontend
-    build:
-      context: ./frontend
-    # restart: always
-    ports:
-      - 127.0.0.1:8080:8080 # only bind port locally for now
-
   devgame_backend:
-    container_name: DevGame_backend
+    container_name: devGame_backend
     build:
       context: ./backend
     env_file: .env
@@ -40,8 +32,24 @@ services:
 
     # command: ["python", "manage.py", "makemigrations"] 
     # command: ["python", "manage.py", "migrate"]
-    
-    command: ["python", "manage.py", "runserver", "0.0.0.0:8081"]
+    command: bash -c 'python manage.py migrate && python manage.py runserver 0.0.0.0:8081'
+    # command: ["python", "manage.py", "runserver", "0.0.0.0:8081"]
+
+  devgame_frontend:
+      container_name: devgame_frontend
+      build:
+        context: ./frontend
+      depends_on:
+        - devgame_backend
+      # restart: always
+      volumes: 
+      - ./frontend/devgame_react:/devgame_react
+      ports:
+        - 127.0.0.1:8080:8080 # only bind port locally for now
+      working_dir: "/devgame_react"
+      environment:
+        - PORT=8080
+      command: npm start
 
 volumes:
   my-db:
