@@ -1,26 +1,22 @@
-import logo from './logo.svg';
+import cat from './cat.png';
 import './App.css';
+import React from 'react';
 
-function App() {
+function Cat(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>PARTY</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Welcome to {props.name}'s Homepage!</h2>
+      <img class="cat" src={cat}/>
     </div>
-  );
+  )
+}
+function App(props) {
+    return(
+      <div className="App">
+      <h1>Hello!</h1>
+      <Cat name={props.name} />
+      </div>
+    );
 }
 
 export default App;
