@@ -10,7 +10,7 @@ const x = 11;
 
 const myelement = <h1>{(x) < 10 ? "Hello" : "Goodbye"}</h1>
 
-let kitty = "Cindy";
-root.render(<App name={kitty} color="black"/>);
+const cat_data = {name: "Cindy", fluffiness: 200};
+root.render(<App cat_data={cat_data} />);
 
 
