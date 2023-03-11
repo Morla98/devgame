@@ -40,8 +40,8 @@ function Cat(props) {
 function App(cat_data) {
     return(
       <div className="App">
-      <h1>Hello!</h1>
-      <Cat name={cat_data.cat_data.name} fluffiness={cat_data.cat_data.fluffiness} />
+        <h1>Hello!</h1>
+        <Cat name={cat_data.cat_data.name} fluffiness={cat_data.cat_data.fluffiness} />
       </div>
     );
 }

@@ -1,16 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout/Layout"
+import App from "./pages/App/App";
+import Login from "./pages/Login/Login"
+import NoPage from "./pages/NoPage";
 
-import App from './pages/App/App';
-
+export default function WebRoutes() {
+    const cat_data = {name: "Cindy", fluffiness: 200};
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<App cat_data={cat_data} />} />
+                    <Route path="login" element={<Login />} />
+                </Route>
+                <Route path="*" element={<NoPage />} />
+            </Routes>  
+        </BrowserRouter>
+    );
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-/* 
-const x = 8;
-const myelement = <h1>{(x) < 10 ? "Hello" : "Goodbye"}</h1>
-*/
-const cat_data = {name: "Cindy", fluffiness: 200};
-root.render(<App cat_data={cat_data} />);
-
-
+root.render(<WebRoutes />);
