@@ -10,7 +10,7 @@ function Cat(props) {
   }
   
   let [name, setName] = useState("");
-  name == "" ? name = props.name: name = name;
+  name === "" ? name = props.name : void(0);
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(name);
@@ -22,7 +22,7 @@ function Cat(props) {
     <div>
       <h2>Welcome to {name}'s Homepage!</h2>
       <p>Today she is {props.fluffiness}% Fluffy!</p>
-      <img onClick={ (event) => meow("Meooooow", event)} className="cat" src={cat}/>
+      <img alt="Cat" onClick={ (event) => meow("Meooooow", event)} className="cat" src={cat}/>
       <form onSubmit={handleSubmit}>
         <label>Change {name}'s name: 
           <input
@@ -36,6 +36,7 @@ function Cat(props) {
     </div>
   );
 }
+
 function App(cat_data) {
     return(
       <div className="App">
