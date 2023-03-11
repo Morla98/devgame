@@ -1,0 +1,21 @@
+.board-row {
+    text-align: center;
+    margin: 0;
+}
+
+.square {
+    margin: 0;
+    font-size: 1em;
+    background-color: white;
+    border-style: dashed;
+    border-color: black;
+    z-index: -1;
+    width: 3em;
+    height: 3em;
+    vertical-align: top;
+}
+
+.reset-button {
+    margin-top: 1em;
+    text-align: center;
+}
