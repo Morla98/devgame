@@ -1,17 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout/Layout"
+import Home from "./pages/Home/Home"
+import App from "./pages/App/App";
+import Login from "./pages/Login/Login"
+import NoPage from "./pages/NoPage";
+import TicTacToe from './pages/TicTacToe/TicTacToe';
 
+export default function WebRoutes() {
+    const cat_data = {name: "Cindy", fluffiness: 200};
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="cat" element={<App cat_data={cat_data} exact={true} />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="tictactoe" element={<TicTacToe />} exact={true} />
+                </Route>
+                <Route path="*" element={<NoPage />} status={404} />
+            </Routes>  
+        </BrowserRouter>
+    );
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(<WebRoutes />);
