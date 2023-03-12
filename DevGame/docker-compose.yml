@@ -14,19 +14,44 @@ services:
     volumes:
       - my-db:/var/lib/mysql
 
-  devgame_ldap:
+  # devgame_ldap:
+  #  container_name: DevGame_openldap
+  # image: bitnami/openldap:latest
+  #  depends_on:
+  #    - devgame_db
+  #  env_file:
+  #    - ./ldap/.env_ldap
+  #  ports:
+  #    - 127.0.0.1:1389:1389
+  #    - 127.0.0.1:1636:1636
+  #  volumes:
+  #    - openldap_data:/bitnami/openldap
+  devgame_openldap:
+    image: osixia/openldap:latest
     container_name: DevGame_openldap
-    image: bitnami/openldap:latest
-    depends_on:
-      - devgame_db
     env_file:
       - ./ldap/.env_ldap
     ports:
-      - 127.0.0.1:1389:1389
-      - 127.0.0.1:1636:1636
+      - 127.0.0.1:389:389
+      - 127.0.0.1:636:636
     volumes:
-      - openldap_data:/bitnami/openldap
+      - /var/lib/ldap
+      - /etc/ldap/slap.d
+      - /container/service/slapd/assets/certs/
+    domainname: "devgame.org"
+    hostname: "devgame.org"
 
+  devgame_phpLDAPadmin:
+    container_name: DevGame_ldapAdmin
+    image: osixia/phpldapadmin:latest
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: "devgame_openldap"
+      PHPLDAPADMIN_HTTPS: "false"
+    ports:
+      - 127.0.0.1:8082:80
+    depends_on:
+      - devgame_openldap
+    
   devgame_backend:
     container_name: devGame_backend
     build:
@@ -66,5 +91,3 @@ services:
 
 volumes:
   my-db:
-  openldap_data:
-    driver: local
