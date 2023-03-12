@@ -276,3 +276,4 @@ poetry.toml
 DevGame/.env
 DevGame/backend/devgame_django/devgame_api/migrations/0001_initial.py
 DevGame/frontend/devgame_react/package-lock.json
+DevGame/ldap/.env_ldap
