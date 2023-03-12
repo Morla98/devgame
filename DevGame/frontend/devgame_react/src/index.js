@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout/Layout"
+import Home from "./pages/Home/Home"
 import App from "./pages/App/App";
 import Login from "./pages/Login/Login"
 import NoPage from "./pages/NoPage";
@@ -13,11 +14,12 @@ export default function WebRoutes() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<App cat_data={cat_data} exact={true} />} />
+                    <Route index element={<Home />} />
+                    <Route path="cat" element={<App cat_data={cat_data} exact={true} />} />
                     <Route path="login" element={<Login />} />
                     <Route path="tictactoe" element={<TicTacToe />} exact={true} />
                 </Route>
-                <Route path="*" element={<NoPage />} />
+                <Route path="*" element={<NoPage />} status={404} />
             </Routes>  
         </BrowserRouter>
     );
